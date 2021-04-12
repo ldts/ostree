@@ -1356,7 +1356,7 @@ sc_tight_scope: tight-scope.mk
 #	exit $$fail
 
 tight-scope.mk: $(ME)
-	@rm -f $@ $@-t
+#	@rm -f $@ $@-t
 	@perl -ne '/^# TS-start/.../^# TS-end/ and print' $(srcdir)/$(ME) > $@-t
 	@chmod a=r $@-t && mv $@-t $@
 
@@ -1403,7 +1403,7 @@ _gl_TS_other_headers ?= *.h
 .PHONY: _gl_tight_scope
 _gl_tight_scope: $(bin_PROGRAMS)
 	t=exceptions-$$$$;						\
-	trap 's=$$?; rm -f $$t; exit $$s' 0;				\
+#	trap 's=$$?; rm -f $$t; exit $$s' 0;				\
 	for sig in 1 2 3 13 15; do					\
 	  eval "trap 'v=`expr $$sig + 128`; (exit $$v); exit $$v' $$sig"; \
 	done;								\
