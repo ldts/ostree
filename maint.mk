@@ -1089,7 +1089,6 @@ sc_po_check:
 	    | $(SED) 's|^$(_dot_escaped_srcdir)/||' | sort -u > $@-2;	\
 	  diff -u -L $(po_file) -L $(po_file) $@-1 $@-2			\
 	    || { printf '$(ME): '$(fix_po_file_diag) 1>&2; exit 1; };	\
-	  rm -f $@-1 $@-2;						\
 	fi
 
 # Sometimes it is useful to change the PATH environment variable
@@ -1353,8 +1352,8 @@ sc_tight_scope: tight-scope.mk
 	      _gl_tight_scope						\
 		|| fail=1;						\
 	fi;								\
-	rm -f $<;							\
-	exit $$fail
+#	rm -f $<;							\
+#	exit $$fail
 
 tight-scope.mk: $(ME)
 	@rm -f $@ $@-t
